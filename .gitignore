@@ -31,8 +31,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
-# normally the .env would be ignored but for demonstration purposes it is not ignored now --Max
-# .env*
+.env*
 
 # vercel
 .vercel
