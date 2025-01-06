@@ -21,9 +21,6 @@ const getSliceStart = (currentPageIndex: number) => {
     return currentPageIndex - 1
   }
   return 0
-  // const result = currentPageIndex - 1 > -1 ? currentPageIndex - 1 : 0
-  // console.log('returning result', result);
-  // return result
 };
 
 const getPaginationRange = (totalPages: number, currentPage: number): number[] => {
@@ -33,10 +30,7 @@ const getPaginationRange = (totalPages: number, currentPage: number): number[] =
   )
   const currentPageIndex = totalPageRange.findIndex(page => page === currentPage);
   const sliceStart = getSliceStart(currentPageIndex);
-  console.log('slice start', sliceStart);
-  const x = totalPageRange.slice(sliceStart, sliceStart + 3);
-  console.log('sliced', x);
-  return x
+  return totalPageRange.slice(sliceStart, sliceStart + 3);
 }
 
 const CharacterPagination: FC<Props> = ({totalPages, currentPage}) => {

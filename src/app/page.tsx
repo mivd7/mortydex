@@ -1,6 +1,6 @@
 import CharacterCardContainer from "@/components/CharacterCardContainer";
 import CharacterPagination from "@/components/CharacterPagination";
-import { getCharacters } from "rickmortyapi";
+import { getCharacters, getLocations } from "rickmortyapi";
 
 export default async function Home(props: {
   searchParams?: Promise<{
@@ -11,15 +11,18 @@ export default async function Home(props: {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
+  const locations = await getLocations({dimension: ''})
+  console.log('locations', locations)
   const data = await getCharacters({page: currentPage }).then(res => res.data).catch(err => console.error(err));
   const characters = data?.results;
   const totalPages = data?.info?.pages;
+
   return (
     <div>
       <main className="container flex flex-col mx-auto py-10">
         <div className="mb-5">
           <h1 className="text-5xl font-bold">Mortydex</h1>
-          <p>Find your favorite character in the universe</p>
+          <p>Find your favorite character in any universe or dimension</p>
         </div>
         <CharacterCardContainer currentPage={currentPage} characters={characters} totalPages={data?.info?.pages}/>
         <div className="flex items-center mt-5">
