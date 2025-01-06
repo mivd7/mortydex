@@ -12,7 +12,9 @@ const CharacterInfoLine: FC<{heading: string, text: string}> = ({heading, text})
   </div>
 
 const getEpisodeIdFromUrl = (episodeUrl: string) => {
+  console.log('hello from getEpisodeIdFromUrl')
   const split = episodeUrl.split('/');
+  console.log('returning', split[split.length - 1])
   return Number(split[split.length - 1])
 }
 
@@ -30,6 +32,8 @@ export default async function CharacterDetail({
   if(!character) {
     return notFound();
   }
+
+  console.log('character sliced -4', character.episode.slice(-4));
 
   return(
     <main className="min-h-screen bg-slate-950 py-5">

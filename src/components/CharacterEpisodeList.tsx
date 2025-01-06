@@ -9,11 +9,20 @@ interface Props {
 }
 
 const CharacterEpisodeList: FC<Props> = async ({episodeIds}) => {
-  const episodes = await getEpisode(episodeIds).then(res => res.data).catch(err => console.error(err));
-  return episodes?.length && episodes.map(episode => 
+  console.log('episodeIds', episodeIds)
+  const episodeData = await getEpisode(episodeIds.length > 1 ? episodeIds : episodeIds[0]).then(res => res.data).catch(err => console.error(err));
+  
+  if(!episodeData) {
+    return <p>No episodes found</p>
+  }
+
+  return Array.isArray(episodeData) ? episodeData.map(episode => 
     <Link key={episode.id} href={`/episodes/${episode.id}`} className="h-full">
       <EpisodeCard episode={episode}/>
-    </Link>)
+    </Link>) : 
+    <Link href={`/episodes/${episodeData.id}`} className="h-full">
+      <EpisodeCard episode={episodeData}/>
+    </Link>
 }
 
 export default CharacterEpisodeList;
