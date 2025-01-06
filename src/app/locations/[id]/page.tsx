@@ -41,12 +41,12 @@ export default async function EpisodeDetail({
           <HomeIcon className="text-white w-8 h-8"/>
       </Link>
       <header className="flex flex-col items-center mx-auto gap-2 pb-5 border-b border-white w-full lg:pt-0 pt-10">
-        <h1 className="text-6xl text-lime-500">{location.name}</h1>
-        <p className="text-white text-xl">Type: {location.type}</p>
-        <p className="text-white text-xl">Dimension: {location.dimension}</p>
+        <h1 className="text-3xl lg:text-6xl text-lime-500">{location.name}</h1>
+        <p className="text-white text-md lg:text-xl">Type: {location.type}</p>
+        <p className="text-white text-md lg:text-xl">Dimension: {location.dimension}</p>
       </header>
-      {characters?.length && <div className="container mx-auto py-5">
-        <h3 className="text-4xl text-lime-300 font-bold mb-5">Characters located in {location.name}</h3>
+      {characters?.length && <div className="container mx-auto py-5 px-5 lg:px-0">
+        <h3 className="text-2xl lg:text-4xl text-lime-300 font-bold mb-5">Characters located in {location.name}</h3>
         {characters && <CharacterCardContainer characters={Array.isArray(characters) ? characters : [characters]}/>}
       </div>}
     </main>
