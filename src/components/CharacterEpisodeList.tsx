@@ -9,9 +9,8 @@ interface Props {
 }
 
 const CharacterEpisodeList: FC<Props> = async ({episodeIds}) => {
-  console.log('episodeIds', episodeIds)
   const episodeData = await getEpisode(episodeIds.length > 1 ? episodeIds : episodeIds[0]).then(res => res.data).catch(err => console.error(err));
-  
+
   if(!episodeData) {
     return <p>No episodes found</p>
   }

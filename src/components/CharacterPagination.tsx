@@ -14,6 +14,7 @@ import {
 interface Props {
   totalPages: number;
   currentPage: number;
+  pageParamKey?: string;
 }
 
 const getSliceStart = (currentPageIndex: number) => {
@@ -33,23 +34,23 @@ const getPaginationRange = (totalPages: number, currentPage: number): number[] =
   return totalPageRange.slice(sliceStart, sliceStart + 3);
 }
 
-const CharacterPagination: FC<Props> = ({totalPages, currentPage}) => {
+const CharacterPagination: FC<Props> = ({totalPages, currentPage, pageParamKey = 'page'}) => {
     const paginationRange = useMemo(() => getPaginationRange(totalPages, currentPage), [totalPages])
 
     return(
       <Pagination>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious href={`?page=${currentPage - 1}`} />
+            <PaginationPrevious href={`?${pageParamKey}=${currentPage - 1}`} />
           </PaginationItem>
 
           {currentPage < totalPages - 2 ? paginationRange.map(pageNumber => <PaginationItem key={'page-nav-'+pageNumber}>
-            <PaginationLink href={`?page=${pageNumber}`} isActive={pageNumber === currentPage}>
+            <PaginationLink href={`?${pageParamKey}=${pageNumber}`} isActive={pageNumber === currentPage}>
               {pageNumber}
             </PaginationLink>
             </PaginationItem>) : 
             <PaginationItem>
-              <PaginationLink href={`?page=1`}>1</PaginationLink>
+              <PaginationLink href={`?${pageParamKey}=1`}>1</PaginationLink>
             </PaginationItem>
           }
 
@@ -58,17 +59,17 @@ const CharacterPagination: FC<Props> = ({totalPages, currentPage}) => {
           </PaginationItem>
 
           {currentPage >= totalPages - 2 ? paginationRange.map(pageNumber => <PaginationItem key={'page-nav-'+pageNumber}>
-            <PaginationLink href={`?page=${pageNumber}`} isActive={pageNumber === currentPage}>
+            <PaginationLink href={`?${pageParamKey}=${pageNumber}`} isActive={pageNumber === currentPage}>
               {pageNumber}
             </PaginationLink>
             </PaginationItem>) : 
             <PaginationItem>
-              <PaginationLink href={`?page=${totalPages}`}>{totalPages}</PaginationLink>
+              <PaginationLink href={`?${pageParamKey}=${totalPages}`}>{totalPages}</PaginationLink>
             </PaginationItem>
           }
 
           <PaginationItem>
-            <PaginationNext href={`?page=${currentPage + 1}`} />
+            <PaginationNext href={`?${pageParamKey}=${currentPage + 1}`} />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
