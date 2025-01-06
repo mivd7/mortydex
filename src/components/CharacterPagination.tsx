@@ -1,3 +1,4 @@
+
 'use client';
 
 import { FC, useMemo } from "react";
@@ -35,7 +36,7 @@ const getPaginationRange = (totalPages: number, currentPage: number): number[] =
 }
 
 const CharacterPagination: FC<Props> = ({totalPages, currentPage, pageParamKey = 'page'}) => {
-    const paginationRange = useMemo(() => getPaginationRange(totalPages, currentPage), [totalPages])
+    const paginationRange = useMemo(() => getPaginationRange(totalPages, currentPage), [totalPages, currentPage])
 
     return(
       <Pagination>

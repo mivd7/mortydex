@@ -1,7 +1,6 @@
 import { FC } from "react";
-import { Character, getCharacters } from "rickmortyapi";
+import { Character } from "rickmortyapi";
 import CharacterCard from "./CharacterCard";
-import CharacterPagination from "./CharacterPagination";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 

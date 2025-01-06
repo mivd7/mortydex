@@ -2,7 +2,7 @@ import CharacterCardContainer from "@/components/CharacterCardContainer";
 import CharacterPagination from "@/components/CharacterPagination";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { getCharacters, getLocation, getLocations } from "rickmortyapi";
+import { getCharacters } from "rickmortyapi";
 
 export default async function Home(props: {
   searchParams?: Promise<{

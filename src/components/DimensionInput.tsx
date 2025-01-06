@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import { Input } from "@/components/ui/input"
@@ -19,7 +20,9 @@ const DimensionInput: FC = () => {
       },
       [searchParams]
     )
+
   const onSubmit = (e: any) => {
+    
     e.preventDefault();
     router.push(pathname + '?' + createQueryString('dimension', e.target[0].value))
   }

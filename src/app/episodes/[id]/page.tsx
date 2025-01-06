@@ -1,9 +1,7 @@
-import CharacterEpisodeList from "@/components/CharacterEpisodeList";
-import Image from "next/image";
+
 import Link from "next/link";
 import { notFound } from "next/navigation"
-import { FC } from "react";
-import { getCharacter, getEpisode, getEpisodes } from "rickmortyapi"
+import { getCharacter, getEpisode } from "rickmortyapi"
 import CharacterCardContainer from "@/components/CharacterCardContainer";
 import { HomeIcon } from "lucide-react";
 

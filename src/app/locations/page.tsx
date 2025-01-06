@@ -1,10 +1,9 @@
 import CharacterPagination from "@/components/CharacterPagination";
-import DimensionSelect from "@/components/DimensionSelect";
 import LocationCard from "@/components/LocationCard";
 import { HomeIcon } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getCharacters, getLocation, getLocations } from "rickmortyapi";
+import { getLocations } from "rickmortyapi";
 
 export default async function Home(props: {
   searchParams?: Promise<{
@@ -39,7 +38,7 @@ export default async function Home(props: {
         </div>
   
         <div className="flex items-center mt-5">
-          {allLocations?.info?.pages! > 1 && <CharacterPagination totalPages={allLocations?.info?.pages!} currentPage={currentPage}/>}
+          {allLocations?.info?.pages && allLocations?.info?.pages > 1 && <CharacterPagination totalPages={allLocations?.info?.pages} currentPage={currentPage}/>}
         </div>
       </main>
   );

@@ -5,12 +5,11 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { FC, useCallback, useState } from "react"
+import { FC, useCallback } from "react"
  
 interface Props {
   options: string[]

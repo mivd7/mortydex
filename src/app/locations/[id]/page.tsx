@@ -1,16 +1,8 @@
-import CharacterEpisodeList from "@/components/CharacterEpisodeList";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation"
-import { FC } from "react";
-import { getCharacter, getEpisode, getEpisodes, getLocation } from "rickmortyapi"
+import { getCharacter, getLocation } from "rickmortyapi"
 import CharacterCardContainer from "@/components/CharacterCardContainer";
 import { HomeIcon } from "lucide-react";
-
-export const getResidentIdFromUrl = (characterUrl: string) => {
-  const split = characterUrl.split('/');
-  return Number(split[split.length - 1])
-}
 
 export default async function EpisodeDetail({
   params,
@@ -29,8 +21,7 @@ export default async function EpisodeDetail({
 
   const locationResidentIds = location.residents.map(residentUrl => getResidentIdFromUrl(residentUrl))
   const characters = await getCharacter(Array.isArray(locationResidentIds) ? locationResidentIds : locationResidentIds[0]).then(res => res.data).catch(err => console.error(err));
-  console.log('locationResidentIds', locationResidentIds)
-  console.log('characters', characters)
+
   if(!characters) {
     return notFound()
   }
@@ -51,4 +42,9 @@ export default async function EpisodeDetail({
       </div>}
     </main>
   )
+}
+
+const getResidentIdFromUrl = (characterUrl: string) => {
+  const split = characterUrl.split('/');
+  return Number(split[split.length - 1])
 }

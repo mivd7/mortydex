@@ -9,7 +9,7 @@ This is an app to explore characters and locations in the Rick and Morty multive
 3. The app is now running on http://localhost:3000
 
 ## Future improvements
-As this was a case assignment, this app was developed in limited time. Some suggestions for further improvements include:
+As this was a case assignment, this app was developed in limited time and thus not all features were fully developed. Some suggestions for further improvements include:
 - Make it more responsive
 - Develop an actual design for the UI/UX using design software (like Figma)
 - Create an episode overview and character overview page

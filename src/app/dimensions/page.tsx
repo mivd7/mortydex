@@ -1,9 +1,13 @@
 import DimensionInput from "@/components/DimensionInput";
 import { getCharacter, getLocations } from "rickmortyapi";
-import { getResidentIdFromUrl } from "../locations/[id]/page";
 import CharacterCardContainer from "@/components/CharacterCardContainer";
 import Link from "next/link";
 import { HomeIcon } from "lucide-react";
+
+const getResidentIdFromUrl = (characterUrl: string) => {
+  const split = characterUrl.split('/');
+  return Number(split[split.length - 1])
+}
 
 export default async function Home(props: {
   searchParams?: Promise<{
@@ -12,7 +16,6 @@ export default async function Home(props: {
   }>;
 }) {
   const searchParams = await props.searchParams;
-  const currentPage = Number(searchParams?.page) || 1;
   const dimension = searchParams?.dimension || '';
   const dimensionLocations = await getLocations({dimension}).then(res => res.data).catch(err => console.error(err));
   const residentIds = [...new Set(dimensionLocations?.results?.flatMap(location => location.residents))].map(url => getResidentIdFromUrl(url));
@@ -30,7 +33,7 @@ export default async function Home(props: {
         </header>
 
         <div className="container mx-auto mt-5">
-          {!dimensionLocations?.results && <p>No results found for "{dimension}"</p>}
+          {!dimensionLocations?.results && <p>No results found for {dimension}</p>}
           {dimension && characters?.length && <>
             <h3 className="text-4xl font-bold mb-5">Characters in dimension {dimension}</h3>
             {characters && <CharacterCardContainer characters={characters}/>}

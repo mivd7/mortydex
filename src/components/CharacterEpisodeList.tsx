@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { getEpisode } from "rickmortyapi";
 import EpisodeCard from "./EpisodeCard";
-import CharacterPagination from "./CharacterPagination";
 import Link from "next/link";
 
 interface Props {

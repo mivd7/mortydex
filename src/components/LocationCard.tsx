@@ -1,7 +1,6 @@
 import { FC } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
-import { Character, Episode, Location } from "rickmortyapi"
-import Image from "next/image";
+import { Location } from "rickmortyapi"
 
 interface Props {
   location: Location;
