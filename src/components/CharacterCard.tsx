@@ -9,9 +9,9 @@ interface Props {
 
 const CharacterCard: FC<Props> = ({character}) => {
   return(
-      <Card className="cursor-pointer">
+      <Card className="cursor-pointer shadow-lg transition-all duration-700 hover:scale-110">
         <CardHeader>
-          <Image alt={character.name} src={character.image} width={1000} height={1000} className="object-center max-w-full" priority/>
+          <Image alt={character.name} src={character.image} width={300} height={300} className="object-center max-w-full" priority/>
         </CardHeader>
         <CardContent>
           <CardTitle>{character.name}</CardTitle>

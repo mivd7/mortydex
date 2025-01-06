@@ -46,8 +46,9 @@ const CharacterPagination: FC<Props> = ({totalPages, currentPage}) => {
       <Pagination>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious href="#" />
+            <PaginationPrevious href={`?page=${currentPage - 1}`} />
           </PaginationItem>
+
           {currentPage < totalPages - 2 ? paginationRange.map(pageNumber => <PaginationItem key={'page-nav-'+pageNumber}>
             <PaginationLink href={`?page=${pageNumber}`} isActive={pageNumber === currentPage}>
               {pageNumber}
@@ -61,6 +62,7 @@ const CharacterPagination: FC<Props> = ({totalPages, currentPage}) => {
           <PaginationItem>
             <PaginationEllipsis />
           </PaginationItem>
+
           {currentPage >= totalPages - 2 ? paginationRange.map(pageNumber => <PaginationItem key={'page-nav-'+pageNumber}>
             <PaginationLink href={`?page=${pageNumber}`} isActive={pageNumber === currentPage}>
               {pageNumber}
@@ -72,7 +74,7 @@ const CharacterPagination: FC<Props> = ({totalPages, currentPage}) => {
           }
 
           <PaginationItem>
-            <PaginationNext href="#" />
+            <PaginationNext href={`?page=${currentPage + 1}`} />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
