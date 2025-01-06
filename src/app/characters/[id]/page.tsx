@@ -3,10 +3,10 @@ import { Home } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation"
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { getCharacter, getLocation } from "rickmortyapi"
 
-const CharacterInfoLine: FC<{heading: string, text: string}> = ({heading, text}) =>
+const CharacterInfoLine: FC<{heading: string, text: string | ReactNode}> = ({heading, text}) =>
   <div>
     <h3 className="text-2xl text-lime-300 font-bold">{heading}</h3>
     <p className="text-xl text-white">{text}</p>
@@ -54,7 +54,7 @@ export default async function CharacterDetail({
           {character.origin && <CharacterInfoLine heading="Origin" text={character.origin.name}/>}
           {character.location && <CharacterInfoLine heading="Location" text={character.location.name}/>}
           {character.status && <CharacterInfoLine heading="Status" text={character.status}/>}
-          {location?.dimension && <CharacterInfoLine heading="Dimension" text={location?.dimension}/>}
+          {location?.dimension && <CharacterInfoLine heading="Dimension" text={<Link className="hover:underline underline-offset-2" href={`/dimensions?dimension=${location.dimension}`}>{location?.dimension}</Link>}/>}
         </div>
         <div className="container mx-auto text-white lg:w-1/2 flex lg:pl-5 mt-5 lg:mt-0">
           {character.episode.length && 
