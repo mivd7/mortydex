@@ -1,26 +1,24 @@
 import { FC } from "react";
-import { getCharacters } from "rickmortyapi";
+import { Character, getCharacters } from "rickmortyapi";
 import CharacterCard from "./CharacterCard";
 import CharacterPagination from "./CharacterPagination";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface Props {
+  characters: Character[] | undefined;
+  totalPages?: number;
   currentPage?: number;
 }
 
-const CardContainer: FC<Props> = async ({currentPage = 1}) => {
-  const data = await getCharacters({page: currentPage}).then(res => res.data).catch(err => console.error(err));
-  const characters = data?.results;
+const CardContainer: FC<Props> = ({characters}) => {
+  if(!characters) {
+    return notFound()
+  }
   return (
-    <div className="w-full flex flex-col gap-5">
-      <p className="text-lg font-bold">Total results: {data?.info?.count}</p>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 w-full">
         {characters?.length && characters.map(character => <Link key={character.id} href={`/characters/${character.id}`}><CharacterCard character={character}/></Link>)}
       </div>
-      <div className="flex items-center">
-        {data?.info?.pages && <CharacterPagination totalPages={data?.info?.pages} currentPage={currentPage}/>}
-      </div>
-    </div>
   )
 }
 

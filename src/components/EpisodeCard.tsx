@@ -9,7 +9,7 @@ interface Props {
 
 const CharacterCard: FC<Props> = ({episode}) => {
   return(
-      <Card className="cursor-pointer shadow-lg transition-all duration-700 hover:scale-105">
+      <Card className="cursor-pointer shadow-lg transition-all duration-700 hover:scale-105 h-full">
         <CardHeader>
           <CardTitle>{episode.name}</CardTitle>
         </CardHeader>

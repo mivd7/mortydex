@@ -30,7 +30,7 @@ export default async function CharacterDetail({
   if(!character) {
     return notFound();
   }
-  console.log('get character result', character)
+
   return(
     <main className="min-h-screen bg-slate-950 py-5">
       <header className="flex flex-col items-center mx-auto gap-5 pb-5 border-b border-white w-full">
@@ -49,11 +49,11 @@ export default async function CharacterDetail({
         <div className="text-white w-1/2 flex pl-5">
           {character.episode.length && 
             <div className="flex flex-col gap-4">
-              <h3 className="text-2xl text-lime-300 font-bold">Last Featured Episodes</h3>
+              <h3 className="text-2xl text-lime-300 font-bold">Last episodes featuring {character.name}</h3>
               <div className="grid grid-cols-2 gap-4">
                 <CharacterEpisodeList episodeIds={character.episode.slice(-4).map(episodeUrl => getEpisodeIdFromUrl(episodeUrl))}/>
               </div>
-              <Link className="underline text-lime-300" href="/episodes">See all episodes featuring {character.name}</Link>
+              <Link className="underline text-lime-300" href="/episodes">See all episodes</Link>
             </div>
           }
         </div>
