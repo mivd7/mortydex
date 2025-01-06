@@ -22,7 +22,14 @@ export default async function Home(props: {
         <div className="mb-2">
           <h1 className="text-5xl font-bold">Mortydex</h1>
           <p className="mb-2">Find your favorite character in any location or dimension</p>
-          <Link href="/locations"><Button>Browse by locations</Button></Link>
+          <div className="flex justify-between">
+            <Link href="/locations">
+              <Button>Browse by locations</Button>
+            </Link>
+            <Link href="/dimensions">
+              <Button>Browse by dimensions</Button>
+            </Link>
+          </div>
         </div>
         <h3 className="text-3xl font-bold mb-5">All characters</h3>
         <CharacterCardContainer currentPage={currentPage} characters={allCharacters?.results} totalPages={totalPages}/>

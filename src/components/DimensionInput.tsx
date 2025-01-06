@@ -19,16 +19,11 @@ const DimensionInput: FC = () => {
       },
       [searchParams]
     )
-  
-  const onValueChange = (val: string) => {
-      router.push(pathname + '?' + createQueryString('dimension', val))
-  }
-
   const onSubmit = (e: any) => {
     e.preventDefault();
     router.push(pathname + '?' + createQueryString('dimension', e.target[0].value))
   }
 
-  return <form onSubmit={onSubmit} className="max-w-72 flex gap-2"><Input type="text" placeholder="Search for a dimension" /><Button type="submit">Search</Button></form>
+  return <form onSubmit={onSubmit} className="flex gap-2"><Input type="text" placeholder="e.g. Dimension C-137, Replacement Dimension etc." className="flex-shrink"/><Button type="submit">Search</Button></form>
 }
 export default DimensionInput;
